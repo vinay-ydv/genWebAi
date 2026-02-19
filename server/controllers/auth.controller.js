@@ -10,7 +10,7 @@ export const googleAuth=async(req,res)=>{
                 message:"email is required"
             })
           }
-          const user=await User.findOne({email})
+          let user=await User.findOne({email})
           if(!user){
             user=await User.create({name,email,avatar})
           }
@@ -22,10 +22,11 @@ export const googleAuth=async(req,res)=>{
             httpOnly:true,
             secure:false,
             sameSite:"strict",
-            maxAge:7*24*60*1000
+            maxAge:7*24*60*60*1000
           })
           return res.status(200).json(user)
     }catch(error){
+    
    return res.status(500).json({message:`google auth error ${error}`})
     }
 }
@@ -33,12 +34,13 @@ export const googleAuth=async(req,res)=>{
 
 export const logOut=async(req,res)=>{
     try{
-  return res.clearCookie("token",{
+ res.clearCookie("token",{
     httpOnly:true,
     secure:false,
     sameSite:"Strict",
    
   })
+  return res.status(200).json({message:"logged out successfully"})
     }catch(error){
  return res.status(500).json({message:`logout error ${error}`})
     }
