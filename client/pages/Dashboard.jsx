@@ -113,7 +113,7 @@ const Dashboard = () => {
                                         {new Date(w.updatedAt).toLocaleDateString()}
                                     </p>
 
-                                     {/* /* {!w.deployed ? (
+                                      {!w.deployed ? (
                                         <button className='mt-auto flex items-center justify-center gap-2
                                       px-4 py-2 rounded-xl text-sm font-semibold bg-gradient-to-r from-indigo-500 to-purple-500
                                       hover:scale-105 transition'  onClick={(e) => {
@@ -147,7 +147,7 @@ const Dashboard = () => {
                                                     </>
                                             }
                                         </motion.button>
-                                    )}  */ */}
+                                    )}  
                                 </div>
 
                             </motion.div>
