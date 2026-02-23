@@ -9,7 +9,7 @@ import Generate from '../pages/Generate.jsx'
 import WebsiteEditor from '../pages/Editor.jsx'
 import LiveSite from '../pages/LiveSite.jsx'
 import Pricing from '../pages/Pricing.jsx'
-export const serverUrl="http://localhost:8000"
+export const serverUrl="https://genwebai-trzt.onrender.com"
 
 const App = () => {
   UseGetCurrentUser()
