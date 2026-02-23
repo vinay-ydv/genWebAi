@@ -17,27 +17,27 @@ This project integrates modern AI models with a scalable web architecture to del
 🌐 Real-time or on-demand generation
 📁 History or session tracking
 
-🛠 Tech Stack
-Frontend
-      React.js
-      Tailwind CSS
+🛠 Tech Stack:
+ -----Frontend -----
+      React.js,
+      Tailwind CSS,
       Framer Motion for modern UI animations and transitions
 
-Backend
-     Node.js
-     Express.js
+------Backend-----
+     Node.js,
+     Express.js,
      Payment processing and billing integration using Stripe
 
-Database
+-----Database-------
      MongoDB 
 
-AI Integration
-     Model access and routing via OpenRouter
-     Advanced language reasoning and generation using DeepSeek models
+-----AI Integration-----
+     Model access and routing via OpenRouter,
+     Advanced language reasoning and generation using DeepSeek models,
      OpenAI API 
 
-Other Tools
-  Git & GitHub
+-----Other Tools-----
+  Git & GitHub,
   Environment Variables
 
 Cloud Deployment (Render)
