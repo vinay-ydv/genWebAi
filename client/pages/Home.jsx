@@ -45,10 +45,10 @@ const Home = () => {
                         GenWeb.Ai
                     </div>
                     <div className='flex items-center gap-5'>
-                        <div className='hidden md:inline text-sm text-zinc-400 hover:text-white cursor-pointer'>
+                        <div className='hidden md:inline text-sm text-zinc-400 hover:text-white cursor-pointer' onClick={()=>navigate("/pricing")}>
                             Pricing
                         </div>
-                        {userData && <div className='hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm cursor-pointer hover:bg-white/10 transition'>
+                        {userData && <div className='hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10 text-sm cursor-pointer hover:bg-white/10 transition' onClick={()=>navigate("/pricing")}>
                             <Coins size={14} className='text-yellow-400' />
                             <span className='text-zinc-300'>Credits</span>
                             <span>{userData.credits}</span>
@@ -130,7 +130,7 @@ const Home = () => {
                     Describe your idea and let AI generate a modern,
                     responsive, production-ready website.
                 </motion.p>
-                <button className='px-10 py-4 rounded-xl bg-white text-black font-semibold hover:scale-105 transition mt-12' onClick={()=>navigate("/dashboard")}>
+                <button className='px-10 py-4 rounded-xl bg-white text-black font-semibold hover:scale-105 transition mt-12' onClick={()=>userData? navigate("/dashboard"):setOpenLogin(true)}>
                    {userData?"Goto dashboard":" Get Started"}
                 </button>
             </section>
