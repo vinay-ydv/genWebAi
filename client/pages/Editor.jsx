@@ -160,7 +160,7 @@ setThinkingIndex((i)=>(i+1)%thinkingSteps.length)
                 <div className='h-14 px-4 flex justify-between items-center border-b border-white/10 bg-black/80'>
                     <span className='text-xs text-zinc-400'>Live Preview</span>
                     <div className='flex gap-2'>
-                        {  {website.deployed?"":
+                          {website.deployed?"":
                         <button className='flex items-center gap-2 px-4 py-1.5 rounded-lg bg-linear-to-r from-indigo-500
             to-purple-500 text-sm font-semibold hover:scale-105 transition' onClick={handleDeploy}><Rocket size={14} />Deploy</button> } 
             <button className='p-2 lg:hidden' onClick={()=>setShowChat(true)}><MessageSquare size={18}/></button>
