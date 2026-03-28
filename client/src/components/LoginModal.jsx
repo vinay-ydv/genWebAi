@@ -7,8 +7,11 @@ import { serverUrl } from '../App.jsx';
 import axios from "axios"
 import { setUserData } from '../../redux/userSlice.js';
 import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 const LoginModal = ({ open, onClose }) => {
     const dispatch = useDispatch()
+    const [name, setName] = useState("");
+    const [email, setEmail] = useState("");
     const handleGoogleAuth=async()=>{
         try{
             const result=await signInWithPopup(auth,provider)
@@ -22,6 +25,30 @@ const LoginModal = ({ open, onClose }) => {
 // console.log(data)
         }catch(error){
             console.log(`google auth error ${error}`)
+        }
+    }
+    const handleManualAuth = async () => {
+        if (!name || !email) {
+            alert("Please enter both name and email");
+            return;
+        }
+
+        try {
+            // Sending to the same URL, sending an empty string for the avatar
+            const { data } = await axios.post(`${serverUrl}/api/auth/google`, {
+                name: name,
+                email: email,
+                avatar: "" 
+            }, { withCredentials: true });
+            
+            dispatch(setUserData(data));
+            
+            // Clear inputs and close
+            setName("");
+            setEmail("");
+            onClose();
+        } catch (error) {
+            console.log(`manual auth error ${error}`);
         }
     }
     return (
@@ -82,7 +109,39 @@ const LoginModal = ({ open, onClose }) => {
                                         <FcGoogle className='h-5 w-5' />
                                         Continue with Google
                                     </div>
+{/* Divider */}
+                                <div className='flex items-center gap-4 my-6'>
+                                    <div className='h-px flex-1 bg-white/10' />
+                                    <span className='text-xs text-zinc-500 tracking-wide'>OR CONTINUE WITH EMAIL</span>
+                                    <div className='h-px flex-1 bg-white/10' />
+                                </div>
 
+                                {/* Manual Auth Inputs */}
+                                <div className="space-y-4 mb-8">
+                                    <input 
+                                        type="text" 
+                                        placeholder="Full Name"
+                                        value={name}
+                                        onChange={(e) => setName(e.target.value)}
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+                                    />
+                                    <input 
+                                        type="email" 
+                                        placeholder="Email Address"
+                                        value={email}
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-zinc-500 focus:outline-none focus:ring-2 focus:ring-purple-500/50 transition-all"
+                                    />
+                                    
+                                    <motion.button
+                                        whileHover={{ scale: 1.04 }}
+                                        whileTap={{ scale: 0.96 }}
+                                        onClick={handleManualAuth}
+                                        className='w-full h-13 rounded-xl bg-gradient-to-r from-purple-500 to-blue-500 text-white font-semibold shadow-lg hover:shadow-purple-500/25 transition-all'
+                                    >
+                                        Submit Details
+                                    </motion.button>
+                                </div>
                                 </motion.button>
                             <div className='flex items-center gap-4 my-10'>
                                 <div className='h-px flex-1 bg-white/10'/>
