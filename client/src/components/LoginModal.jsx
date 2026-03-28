@@ -109,6 +109,7 @@ const LoginModal = ({ open, onClose }) => {
                                         <FcGoogle className='h-5 w-5' />
                                         Continue with Google
                                     </div>
+                                    </motion.button>
 {/* Divider */}
                                 <div className='flex items-center gap-4 my-6'>
                                     <div className='h-px flex-1 bg-white/10' />
@@ -142,7 +143,7 @@ const LoginModal = ({ open, onClose }) => {
                                         Submit Details
                                     </motion.button>
                                 </div>
-                                </motion.button>
+                                
                             <div className='flex items-center gap-4 my-10'>
                                 <div className='h-px flex-1 bg-white/10'/>
                                 <span className=' text-xs text-zinc-500 tracking-wide'> Secure Login</span>
