@@ -41,5 +41,5 @@ This project integrates modern AI models with a scalable web architecture to del
   Environment Variables
 
 Cloud Deployment (Render)
-
+If it is not generating website then switch to free model of openrouter by uncommenting  const model = "openrouter/free" inside openrouter.js & uncomment  code inside utils/extractjson
 Live Link: https://genwebai-1-bmhd.onrender.com
